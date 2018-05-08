@@ -76,15 +76,57 @@ function customer(){
                     function(error) {
                       if (error) throw err;
                       console.log(`\nTotal cost of purchase: $${purchaseTotal}`);
+                      inquirer.prompt({
+                        name: "more",
+                        type: "checkbox",
+                        choices: ["YES", "No"],
+                        message: "Would you like to purchase another product?\n"
+                      })
+                      .then(function(answer) {
+                        if (answer.more[0] === "YES") {
+                          customer();
+                        }
+                        else {
+                          console.log("Thank you for shopping with us.\nWe hope to see you again soon.")
+                        }
+                      });
                     }
                 );
             }
             else {
                 if (chosenId.stock_qunatity>0){
                     console.log(`Insufficient quantity - we can only fullfill orders of ${chosenId.stock_qunatity} or less at this time.`) 
+                    inquirer.prompt({
+                        name: "more",
+                        type: "checkbox",
+                        choices: ["YES", "No"],
+                        message: "Would you like to purchase another product?\n"
+                      })
+                      .then(function(answer) {
+                        if (answer.more[0] === "YES") {
+                          customer();
+                        }
+                        else {
+                          console.log("Thank you for shopping with us.\nWe hope to see you again soon.")
+                        }
+                      });
                 }
                 else {
                     console.log('Out of Stock')
+                    inquirer.prompt({
+                        name: "more",
+                        type: "checkbox",
+                        choices: ["YES", "No"],
+                        message: "Would you like to purchase a different product?\n"
+                      })
+                      .then(function(answer) {
+                        if (answer.more[0] === "YES") {
+                          customer();
+                        }
+                        else {
+                          console.log("Check back soon - we're trying our best to restock this product.")
+                        }
+                      });
                 }
             }
         });
