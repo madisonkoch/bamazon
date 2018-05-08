@@ -12,7 +12,10 @@ After each resulting message the customer will be asked if they wish to purchase
 [![Bamazon Demo](./bamazon.png)](http://somup.com/cFhjIsVGAH)
 
 
-```
-Host Repository
+
+
+
+
+
+## Host Repository
 https://github.com/madisonkoch/bamazon
-```
